@@ -7,9 +7,9 @@ import { AppContext } from "./Context/AppContext";
 import { io } from "socket.io-client";
 
 export let socket;
-export const url = "http://localhost:3000";
+// export const url = "http://localhost:3000";
 
-// export const url = "https://webrtc-be.onrender.com";
+export const url = "https://webrtc-be.onrender.com";
 
 if (sessionStorage.getItem("AuthToken")) {
   socket = io(url, {
