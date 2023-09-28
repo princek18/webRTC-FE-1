@@ -4,6 +4,22 @@ import { Login } from "./Components/Login";
 import { SignUp } from "./Components/SignUp";
 import { Contacts } from "./Components/Contacts";
 import { AppContext } from "./Context/AppContext";
+import { io } from "socket.io-client";
+
+export let socket;
+export const url = "http://localhost:3000";
+
+// export const url = "https://webrtc-be.onrender.com";
+
+if (sessionStorage.getItem("AuthToken")) {
+  socket = io(url, {
+    query: { authToken: sessionStorage.getItem("AuthToken") },
+  });
+}
+
+window.onbeforeunload = () => {
+  socket.disconnect();
+};
 
 export const AppRoutes = () => {
   const AuthRoute = ({ children }) => {

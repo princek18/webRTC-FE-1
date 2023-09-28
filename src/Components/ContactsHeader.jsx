@@ -6,9 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 export const ContactsHeader = () => {
   const navigate = useNavigate();
-  const { useUserData } = useContext(AppDataProvider);
+  const { useUserData, socket } = useContext(AppDataProvider);
 
   const handleLogout = () => {
+    socket.disconnect();
     sessionStorage.clear();
     navigate("/");
   };
