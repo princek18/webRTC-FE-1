@@ -18,7 +18,9 @@ export const AppContext = ({ children }) => {
 
   useEffect(() => {
     if (sessionStorage.getItem("AuthToken")) {
-      socket.emit("get-contacts");
+      setTimeout(() => {
+        socket.emit("get-contacts");
+      }, 1000);
 
       socket.on("receive-contacts", (data) => {
         setContacts(data.data);
